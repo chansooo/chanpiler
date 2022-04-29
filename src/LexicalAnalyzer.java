@@ -92,7 +92,9 @@ public class LexicalAnalyzer {
 
             //dfa 성공한 토큰 없을 때  validation
             if(maxLengthTableId == -1){
-                resultInfo += "입력받을 수 없는 문자입니다";
+                resultInfo += "올바른 문법을 입력하세요";
+                resultInfo += startPosition;
+                resultInfo += "번째 글자에서 오류가 발생했습니다";
                 break;
             }
             //나온 토큰 저장, 이전 token type 저장(- 처리 위해서)
