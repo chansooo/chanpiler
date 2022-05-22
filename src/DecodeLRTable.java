@@ -13,6 +13,7 @@ public class DecodeLRTable {
         DecodeTable();
 
     }
+
     public void DecodeTable(){
         try{
             InputStream l = getClass().getResourceAsStream("/LRTable.json");
@@ -20,7 +21,6 @@ public class DecodeLRTable {
         } catch (Exception error){
             System.out.println(error);
         }
-
     }
 
     public JSONObject getTable(int tableNum){
