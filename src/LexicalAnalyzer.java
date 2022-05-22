@@ -92,7 +92,7 @@ public class LexicalAnalyzer {
 
             //dfa 성공한 토큰 없을 때  validation
             if(maxLengthTableId == -1){
-                resultInfo += "올바른 문법을 입력하세요";
+                resultInfo += "ERROR: 올바른 문법을 입력하세요";
                 resultInfo += startPosition;
                 resultInfo += "번째 글자에서 오류가 발생했습니다";
                 break;
@@ -103,12 +103,12 @@ public class LexicalAnalyzer {
                 currentValue = fileInfo.substring(startPosition, startPosition + max);
 
                 if (currentToken.equals("VTYPE")||currentToken.equals("COMPARISON")||currentToken.equals("INTEGER")||currentToken.equals("OPERATOR")||currentToken.equals("ASSIGNMENT")||currentToken.equals("CHAR")||currentToken.equals("BOOLEAN")||currentToken.equals("STRING")||currentToken.equals("IDENTIFIER")) {
-                    resultInfo += ("<"+ currentToken + "," + currentValue + ">");
+                    resultInfo += (currentToken + "," + currentValue + " ");
                 } else{
-                    resultInfo += ("<"+currentToken+">");
+                    resultInfo += (currentToken + " ");
                 }
-                System.out.println("token: " + currentToken);
-                System.out.println("value: " + currentValue);
+//                System.out.println("token: " + currentToken);
+//                System.out.println("value: " + currentValue);
             }
             startPosition += max;
 //            System.out.println("start position" + startPosition);
@@ -128,7 +128,7 @@ public class LexicalAnalyzer {
         }
     }
 
-    public String getlexicalResult(){
+    public String getLexicalResult(){
         return resultInfo;
     }
 }

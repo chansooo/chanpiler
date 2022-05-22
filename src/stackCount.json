@@ -1,0 +1,110 @@
+{
+  "0": {
+    "LHS": "S'",
+    "RHS": 1
+  },
+  "1": {
+    "LHS": "CODE",
+    "RHS": 2
+  },
+  "2": {
+    "LHS": "CODE",
+    "RHS": 2
+  },
+  "3": {
+    "LHS": "CODE",
+    "RHS": 1
+  },
+  "4": {
+    "LHS": "VDECL",
+    "RHS": 3
+  },
+  "5": {
+    "LHS": "FDECL",
+    "RHS": 9
+  },
+  "6": {
+    "LHS": "ARG",
+    "RHS": 3
+  },
+  "7": {
+    "LHS": "ARG",
+    "RHS": 1
+  },
+  "8": {
+    "LHS": "MOREARGS",
+    "RHS": 4
+  },
+  "9": {
+    "LHS": "MOREARGS",
+    "RHS": 1
+  },
+  "10": {
+    "LHS": "BLOCK",
+    "RHS": 2
+  },
+  "11": {
+    "LHS": "BLOCK",
+    "RHS": 1
+  },
+  "12": {
+    "LHS": "STMT",
+    "RHS": 1
+  },
+  "13": {
+    "LHS": "STMT",
+    "RHS": 4
+  },
+  "14": {
+    "LHS": "STMT",
+    "RHS": 11
+  },
+  "15": {
+    "LHS": "STMT",
+    "RHS": 7
+  },
+  "16": {
+    "LHS": "RHS",
+    "RHS": 1
+  },
+  "17": {
+    "LHS": "RHS",
+    "RHS": 1
+  },
+  "18": {
+    "LHS": "EXPR",
+    "RHS": 3
+  },
+  "19": {
+    "LHS": "EXPR",
+    "RHS": 1
+  },
+  "20": {
+    "LHS": "TERM",
+    "RHS": 3
+  },
+  "21": {
+    "LHS": "TERM",
+    "RHS": 1
+  },
+  "22": {
+    "LHS": "FACTOR",
+    "RHS": 3
+  },
+  "23": {
+    "LHS": "FACTOR",
+    "RHS": 1
+  },
+  "24": {
+    "LHS": "FACTOR",
+    "RHS": 1
+  },
+  "25": {
+    "LHS": "COND",
+    "RHS": 3
+  },
+  "26": {
+    "LHS": "RETURN",
+    "RHS": 3
+  }
+}
