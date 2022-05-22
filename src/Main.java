@@ -23,5 +23,7 @@ public class Main {
         br.close();
 
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(fileInfo, fileName);
+        File f2 = new File("./"+ fileName + ".out");
+        SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(f2, fileName);
     }
 }
