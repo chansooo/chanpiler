@@ -24,6 +24,6 @@ public class Main {
 
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(fileInfo, fileName);
         File f2 = new File("./"+ fileName + ".out");
-        SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(f2, fileName);
+        SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(lexicalAnalyzer.getlexicalResult(), fileName);
     }
 }

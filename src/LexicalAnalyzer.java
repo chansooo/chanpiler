@@ -128,5 +128,7 @@ public class LexicalAnalyzer {
         }
     }
 
-    public lexical
+    public String getlexicalResult(){
+        return resultInfo;
+    }
 }
