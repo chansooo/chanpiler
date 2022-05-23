@@ -113,17 +113,17 @@ public class LexicalAnalyzer {
             startPosition += max;
 //            System.out.println("start position" + startPosition);
             //output파일에 저장
-            BufferedOutputStream bs = null;
-            try {
-                bs = new BufferedOutputStream(new FileOutputStream("./" + fileName + ".out"));
-                bs.write(resultInfo.getBytes());
-                bs.close();
-//                System.out.println("파일이 생성되었습니다");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            BufferedOutputStream bs = null;
+//            try {
+//                bs = new BufferedOutputStream(new FileOutputStream("./" + fileName + ".out"));
+//                bs.write(resultInfo.getBytes());
+//                bs.close();
+////                System.out.println("파일이 생성되었습니다");
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
 
         }
     }
