@@ -25,7 +25,7 @@ public class SyntaxAnalyzer {
         stack.push("0");
         transformedTokenList = transformLexical();
         result = run();
-
+        saveTokenList();
     }
 
 
