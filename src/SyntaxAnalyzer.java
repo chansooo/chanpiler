@@ -72,6 +72,7 @@ public class SyntaxAnalyzer {
             //System.out.println("token: " + tokens[i]);
             if (rule == null) {
                 System.out.println("ERROR: "+i+"번째 "+"token - "+transformedTokenList[i]);
+                lexicalInfo += "ERROR: " + i + "번째 token - " + transformedTokenList[i];
                 return false;
             }
             else if (rule.equals("acc"))
