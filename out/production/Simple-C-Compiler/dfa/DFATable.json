@@ -110,7 +110,7 @@
   "11" : {
     "id" : "CHAR",
     "T0" : {"'":"T1"},
-    "T1" : {" ":"T2","abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ":"T3", "1234567890":"T4"},
+    "T1" : {" ":"T2","abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":"T3", "1234567890":"T4"},
     "T2" : {"'":"T5"},
     "T3" : {"'":"T5"},
     "T4" : {"'":"T5"},
@@ -275,20 +275,20 @@
   "17" : {
     "id" : "IDENTIFIER",
     "T0": {
-      "abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T1"
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T1"
     },
     "T1": {
-      "abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T2",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T2",
       "0123456789": "T3",
       "final": "true"
     },
     "T2": {
-      "abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T2",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T2",
       "0123456789": "T3",
       "final": "true"
     },
     "T3": {
-      "abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T2",
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ": "T2",
       "0123456789": "T3",
       "final": "true"
     }

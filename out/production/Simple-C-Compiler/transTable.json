@@ -1,0 +1,27 @@
+{
+  "VTYPE": "vtype",
+  "INTEGER": "num",
+  "CHAR": "character",
+  "BOOLEAN": "boolstr",
+  "STRING": "literal",
+  "IDENTIFIER": "id",
+  "IF": "if",
+  "ELSE": "else",
+  "WHILE": "while",
+  "RETURN": "return",
+  "CLASS": "class",
+  "OPERATOR": {
+    "+": "addsub",
+    "-": "addsub",
+    "*": "multdiv",
+    "/": "multdiv"
+  },
+  "ASSIGNMENT": "assign",
+  "COMPARISON": "comp",
+  "SEMI": "semi",
+  "COMMA": "comma",
+  "LPAREN": "lparen",
+  "RPAREN": "rparen",
+  "LBRACE": "lbrace",
+  "RBRACE": "rbrace"
+}
