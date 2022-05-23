@@ -18,6 +18,7 @@ public class SyntaxAnalyzer {
     public SyntaxAnalyzer(String lexicalResult,String fileName){
         this.fileName = fileName;
         this.lexicalInfo = lexicalResult;
+        stack = new Stack<String>();
         DecodeTable jsonDecoder = new DecodeTable();
         slrTable = jsonDecoder.getSlrTable();
         transTable = jsonDecoder.getTransTable();
@@ -49,7 +50,7 @@ public class SyntaxAnalyzer {
                     continue;
                 }
             }
-            curToken[position] = result;    //인식한 토큰을 Tokens에 하나씩 저장
+            tokenList[position] = result;    //인식한 토큰을 Tokens에 하나씩 저장
             position++;
         }
         tokenList = Arrays.copyOf(tokenList, position + 1);
