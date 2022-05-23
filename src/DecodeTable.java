@@ -20,13 +20,14 @@ public class DecodeTable {
         try{
             InputStream l = getClass().getResourceAsStream("/LRTable.json");
             slrTable = (JSONObject) parser.parse(new InputStreamReader(l));
+            System.out.println(slrTable);
         } catch (Exception error){
             System.out.println(error);
         }
     }
     public void DecodeTransTable(){
         try{
-            InputStream a = getClass().getResourceAsStream("./transTable.json");
+            InputStream a = getClass().getResourceAsStream("/transTable.json");
             transTable = (JSONObject) parser.parse(new InputStreamReader(a));
         } catch (Exception error){
             System.out.println(error);
@@ -35,27 +36,12 @@ public class DecodeTable {
 
     public  void DecodeRuleTable(){
         try{
-            InputStream b = getClass().getResourceAsStream("./transTable.json");
+            InputStream b = getClass().getResourceAsStream("/rule.json");
             transTable = (JSONObject) parser.parse(new InputStreamReader(b));
         } catch (Exception error){
             System.out.println(error);
         }
     }
-
-//    public void DecodeTable(){
-//        try{
-//            InputStream l = getClass().getResourceAsStream("/LRTable.json");
-//            slrTable = (JSONObject) parser.parse(new InputStreamReader(l));
-//        } catch (Exception error){
-//            System.out.println(error);
-//        }
-//    }
-
-//    public JSONObject getTable(int tableNum){
-//        String tableID = Integer.toString(tableNum);
-//        JSONObject parsedTable = (JSONObject) table.get(tableID);
-//        return parsedTable;
-//    }
 
     public JSONObject getTransTable() {
         return transTable;

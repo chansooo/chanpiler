@@ -12,6 +12,7 @@ public class LexicalAnalyzer {
     private final String fileInfo;
     private final String fileName;
     private String resultInfo =  "";
+    String index;
     boolean isFinish = false;
     String currentToken = "";
     String currentValue = "";
@@ -45,16 +46,17 @@ public class LexicalAnalyzer {
             //모든 dfa 돌려주기
             //모든 dfa의 state가 끝난 상태로 인지하면 무엇을 선택할지 고르
             for(int i =0;i<TOKEN_NUM;i++){ //모든 dfa 돌리기
-                lexLength[i] = -1;
+                 lexLength[i] = -1;
                 for(int j = startPosition; j <= fileInfo.length() ;j++){
+               //     System.out.println("startposition: "+startPosition);
                     //DFA가 끝났는지 확인
-                    String index;
+
                     isFinish = dfa[i].setState("final");
 //                    System.out.println("set state to finish: " + isFinish);
                     //끝까지 돌았는데 안 끝났는 것 처리
                     //dfa돌릴 글자 fileInfo[i]를 어디에다가 저장
                     if(j == fileInfo.length()){ //input file의 끝까지 돌았을 때
-                        index = "@#$#@";
+                        index = "@";
                     } else{
                         index = fileInfo.substring(j, j+1);
                     }
@@ -67,11 +69,12 @@ public class LexicalAnalyzer {
                     }
                     //dfa.setState()로 다음 state 반환
                     if(!dfa[i].setState(index)){ //setState가 false 반환할 때
+                        dfa[i].initDFA();
 //                        System.out.println("finished?" + isFinish);
                         if(isFinish){
                             lexLength[i] = j - startPosition; //토큰 길이 저장
+        //                    System.out.println("lexlength"+i+"번째: "+lexLength[i]);
                         }
-                        dfa[i].initDFA();
                         break;
                     }
                 }
@@ -79,14 +82,14 @@ public class LexicalAnalyzer {
                 dfa[i].initDFA();
             }
             //가장 길게 나온 토큰으로 결정해주기
-            int max = -1;
+            int max = 0;
             int maxLengthTableId = -1;
-            for(int j = 0; j<TOKEN_NUM;j++){
+            for(int k = 0; k<TOKEN_NUM;k++){
 //                System.out.println("lex length:" + lexLength[j]);
                 //길이가 같은 2개 이상의 토큰이 있다면 우선순위 순서대로 dfa가 돌아가서 우선순위가 높은 토큰이 먼저 들어가게 되므로 >=이 아닌 >로 해서 우선순위 가장 높은 토큰을 받음
-                if(lexLength[j]>max){
-                    max = lexLength[j];
-                    maxLengthTableId = j;
+                if(max < lexLength[k]){
+                    max = lexLength[k];
+                    maxLengthTableId = k;
                 }
             }
 
