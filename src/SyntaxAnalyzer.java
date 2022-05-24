@@ -14,6 +14,7 @@ public class SyntaxAnalyzer {
     String[] transformedTokenList;
     boolean result;
 
+
     private Stack<String> stack;
     public SyntaxAnalyzer(String lexicalResult,String fileName){
         this.fileName = fileName;
@@ -65,43 +66,61 @@ public class SyntaxAnalyzer {
         String goto_state = "";
         int pop_count = 0;
         JSONObject curState;
+        boolean epsilonMove = false;
+
         for (int i = 0; i < transformedTokenList.length;) {
             curState = (JSONObject)slrTable.get(stack.peek());   //현재상태 테이블 로딩
             //System.out.println("stack top: " + stack.peek());
             rule = (String)curState.get(transformedTokenList[i]);    //다음 액션 로딩
             //System.out.println("token: " + tokens[i]);
             if (rule == null) {
+                rule = (String) curState.get("e");
+                epsilonMove = true;
+
+            }
+            if (rule == null){
                 System.out.println("ERROR: "+i+"번째 "+"token - "+transformedTokenList[i]);
-                lexicalInfo += "ERROR: " + i + "번째 token - " + transformedTokenList[i];
+                lexicalInfo += "\nERROR: " + i + "번째 token - " + transformedTokenList[i];
                 return false;
             }
-            else if (rule.equals("acc"))
+            if (rule.equals("acc"))
                 return true;
-            else if (rule.charAt(0) == 's') {   //action - shift
+            if (rule.charAt(0) == 's') {   //action - shift
+                //epsilon일 경우 shift X
                 shiftCount = rule.substring(1);
                 //System.out.println("Shift to " + shiftCount);
                 stack.push(transformedTokenList[i]);
                 stack.push(shiftCount);
-                i++;
+                if(!epsilonMove){
+                    i++;
+
+                }
             }
             else if (rule.charAt(0) == 'r') {   //action -reduce
-                reduce = (JSONObject) ruleTable.get(rule);   //rule Table 로딩
-                pop_count = (int)reduce.get("RHS");
+                String temp = rule.substring(1);
+                reduce = (JSONObject) ruleTable.get(temp);
+                //reduce = (JSONObject) ruleTable.get(rule);   //rule Table 로딩
+                pop_count = ((Long) reduce.get("RHS")).intValue();
 
                 for (int j= 0; j < pop_count; j++) {    //불러온 글자 수만큼 pop&reduce
                     //System.out.println("popping: " + stack.peek());
+                    stack.pop();
                     stack.pop();
                 }
                 //System.out.println("after pop stack top: " + stack.peek());
                 curState = (JSONObject)slrTable.get(stack.peek());
                 //System.out.println("after pop token: " + temp[0]);
-                String LHS = (String)reduce.get("RHS");
+                String LHS =(String) reduce.get("LHS");
                 goto_state = (String)curState.get(LHS);
 
+//                if (goto_state.equals(-1)){
+//                    return false;
+//                }
                 stack.push(LHS);
                 stack.push(goto_state);
                 // System.out.println("pushed goto state: " + goto_state);
             }
+            epsilonMove = false;
         }
         return false;
     }

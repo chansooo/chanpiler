@@ -20,7 +20,6 @@ public class DecodeTable {
         try{
             InputStream l = getClass().getResourceAsStream("/LRTable.json");
             slrTable = (JSONObject) parser.parse(new InputStreamReader(l));
-            System.out.println(slrTable);
         } catch (Exception error){
             System.out.println(error);
         }
@@ -37,7 +36,7 @@ public class DecodeTable {
     public  void DecodeRuleTable(){
         try{
             InputStream b = getClass().getResourceAsStream("/rule.json");
-            transTable = (JSONObject) parser.parse(new InputStreamReader(b));
+            ruleTable = (JSONObject) parser.parse(new InputStreamReader(b));
         } catch (Exception error){
             System.out.println(error);
         }
