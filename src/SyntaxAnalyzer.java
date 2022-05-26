@@ -51,7 +51,7 @@ public class SyntaxAnalyzer {
                     continue;
                 }
             }
-            tokenList[position] = result;    //인식한 토큰을 Tokens에 하나씩 저장
+            tokenList[position] = result;    //인식한 토큰을 TokenList에 하나씩 저장
             position++;
         }
         tokenList = Arrays.copyOf(tokenList, position + 1);
@@ -70,13 +70,10 @@ public class SyntaxAnalyzer {
 
         for (int i = 0; i < transformedTokenList.length;) {
             curState = (JSONObject)slrTable.get(stack.peek());   //현재상태 테이블 로딩
-            //System.out.println("stack top: " + stack.peek());
             rule = (String)curState.get(transformedTokenList[i]);    //다음 액션 로딩
-            //System.out.println("token: " + tokens[i]);
             if (rule == null) {
                 rule = (String) curState.get("e");
                 epsilonMove = true;
-
             }
             if (rule == null){
                 System.out.println("ERROR: "+i+"번째 "+"token - "+transformedTokenList[i]);
@@ -85,7 +82,8 @@ public class SyntaxAnalyzer {
             }
             if (rule.equals("acc"))
                 return true;
-            if (rule.charAt(0) == 's') {   //action - shift
+            //action shift
+            if (rule.charAt(0) == 's') {
                 //epsilon일 경우 shift X
                 shiftCount = rule.substring(1);
                 //System.out.println("Shift to " + shiftCount);
@@ -96,6 +94,7 @@ public class SyntaxAnalyzer {
 
                 }
             }
+            //action reduce
             else if (rule.charAt(0) == 'r') {   //action -reduce
                 String temp = rule.substring(1);
                 reduce = (JSONObject) ruleTable.get(temp);
