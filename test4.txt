@@ -1,0 +1,14 @@
+int chansoo(char num, int d) {
+        while (1<d){
+             int a = d+2;
+             int asdfggh = -23 * a / 3 -2;
+             int c = (a + b123) - 3 ;
+             int else123 = 0;
+             char awdw3334 = "dfsadkfjbl sadfi eiuhweiui1234  3";
+             if (a == bs123) {
+                return a;
+             }
+            }
+        }
+}
+

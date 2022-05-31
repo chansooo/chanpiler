@@ -16,6 +16,5 @@ int main(char chan, int soo) {
         a = a - 12;
     }
 
-    return res;
 }
 

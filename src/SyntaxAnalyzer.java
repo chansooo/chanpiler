@@ -30,7 +30,7 @@ public class SyntaxAnalyzer {
         saveTokenList();
     }
 
-
+    //lexical analyzer에서 받은 결과물을 syantax analyzer의 문법에 맞도록 변환
     public String[] transformLexical(){
         String[] tokenList;
         String[] curToken;
@@ -70,20 +70,23 @@ public class SyntaxAnalyzer {
 
         for (int i = 0; i < transformedTokenList.length;) {
             curState = (JSONObject)slrTable.get(stack.peek());   //현재상태 테이블 로딩
-            rule = (String)curState.get(transformedTokenList[i]);    //다음 액션 로딩
+            rule = (String)curState.get(transformedTokenList[i]);
+            //rule이 null이라면 epsilon move인지 확인
             if (rule == null) {
                 rule = (String) curState.get("e");
                 epsilonMove = true;
             }
+            //epsilon move도 아니라면 오류로 인식
             if (rule == null){
                 int k = i + 1;
                 System.out.println("ERROR: "+k+"번째 "+"token - "+transformedTokenList[i]);
                 lexicalInfo += "\nERROR: " + k + "번째 token - " + transformedTokenList[i];
                 return false;
             }
+            //끝났다면 true반환
             if (rule.equals("acc"))
                 return true;
-            //action shift
+            //shift 진행
             if (rule.charAt(0) == 's') {
                 //epsilon일 경우 shift X
                 shiftCount = rule.substring(1);
@@ -95,30 +98,21 @@ public class SyntaxAnalyzer {
 
                 }
             }
-            //action reduce
+            //reduce 진행
             else if (rule.charAt(0) == 'r') {   //action -reduce
                 String temp = rule.substring(1);
                 reduce = (JSONObject) ruleTable.get(temp);
-                //reduce = (JSONObject) ruleTable.get(rule);   //rule Table 로딩
                 pop_count = ((Long) reduce.get("RHS")).intValue();
 
                 for (int j= 0; j < pop_count; j++) {    //불러온 글자 수만큼 pop&reduce
-                    //System.out.println("popping: " + stack.peek());
                     stack.pop();
                     stack.pop();
                 }
-                //System.out.println("after pop stack top: " + stack.peek());
                 curState = (JSONObject)slrTable.get(stack.peek());
-                //System.out.println("after pop token: " + temp[0]);
                 String LHS =(String) reduce.get("LHS");
                 goto_state = (String)curState.get(LHS);
-
-//                if (goto_state.equals(-1)){
-//                    return false;
-//                }
                 stack.push(LHS);
                 stack.push(goto_state);
-                // System.out.println("pushed goto state: " + goto_state);
             }
             epsilonMove = false;
         }

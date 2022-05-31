@@ -1,6 +1,17 @@
 int a;
-int c;
-a = (12 * number) + 12;
-if (a > 2) {
-    c = a+2;
+int soo;
+
+int main(char chan, int soo) {
+    int res;
+
+    soo = -45;
+    a = chan + soo / 3;
+    if ((soo / 3) == 0) {
+        res = -1;
+    }
+    while(a!=0){
+        a = a - 12;
+    }
+
+    return res;
 }
