@@ -76,8 +76,9 @@ public class SyntaxAnalyzer {
                 epsilonMove = true;
             }
             if (rule == null){
-                System.out.println("ERROR: "+i+"번째 "+"token - "+transformedTokenList[i]);
-                lexicalInfo += "\nERROR: " + i + "번째 token - " + transformedTokenList[i];
+                int k = i + 1;
+                System.out.println("ERROR: "+k+"번째 "+"token - "+transformedTokenList[i]);
+                lexicalInfo += "\nERROR: " + k + "번째 token - " + transformedTokenList[i];
                 return false;
             }
             if (rule.equals("acc"))
